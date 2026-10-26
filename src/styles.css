@@ -31,6 +31,7 @@ body {
 }
 
 .form-section {
+    min-width: 0;
     background: white;
     padding: 30px;
     border-radius: 12px;
@@ -294,6 +295,7 @@ body {
 }
 
 .history-section {
+    min-width: 0;
     background: white;
     padding: 20px;
     border-radius: 12px;
@@ -453,7 +455,7 @@ body {
 
 @media (max-width: 900px) {
     .container {
-        grid-template-columns: 1fr;
+        grid-template-columns: minmax(0, 1fr);
     }
 
     .history-section {
