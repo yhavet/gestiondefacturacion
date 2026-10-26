@@ -26,6 +26,8 @@ body {
     height: 88px;
     flex: 0 0 auto;
     object-fit: contain;
+    border-radius: 50%;
+    background: #fff;
 }
 
 .header h1 {
