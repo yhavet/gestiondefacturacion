@@ -1,23 +1,31 @@
 import { useEffect, useState } from 'react';
 
-// Misma clave que la versión original, para no perder los datos guardados.
-const STORAGE_KEY = 'invoices';
+export function useStoredList(storageKey) {
+  const [items, setItems] = useState(() => {
+    const raw = localStorage.getItem(storageKey);
+    if (!raw) return [];
 
-function loadInvoices() {
-  try {
-    const raw = localStorage.getItem(STORAGE_KEY);
-    return raw ? JSON.parse(raw) : [];
-  } catch {
-    return [];
-  }
+    try {
+      const parsed = JSON.parse(raw);
+      if (Array.isArray(parsed)) return parsed;
+      throw new TypeError(`Stored value for "${storageKey}" must be an array`);
+    } catch (error) {
+      console.error(`Could not load "${storageKey}" from localStorage.`, error);
+      return [];
+    }
+  });
+
+  useEffect(() => {
+    localStorage.setItem(storageKey, JSON.stringify(items));
+  }, [items, storageKey]);
+
+  return [items, setItems];
 }
 
 export function useInvoices() {
-  const [invoices, setInvoices] = useState(loadInvoices);
+  return useStoredList('invoices');
+}
 
-  useEffect(() => {
-    localStorage.setItem(STORAGE_KEY, JSON.stringify(invoices));
-  }, [invoices]);
-
-  return [invoices, setInvoices];
+export function useQuotes() {
+  return useStoredList('quotes');
 }

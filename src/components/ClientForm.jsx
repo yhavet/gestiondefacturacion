@@ -28,6 +28,10 @@ export default function ClientForm({ client, onChange }) {
         <Field id="clientTelefono" label="Número de Teléfono" type="tel" placeholder="Ej. +54 9 11 2345-6789"
           value={client.telefono} onChange={(v) => onChange('telefono', v)} />
       </div>
+      <div className="input-group single-field">
+        <Field id="clientEmail" label="Correo electrónico" type="email" placeholder="Ej. ana@email.com"
+          value={client.email} onChange={(v) => onChange('email', v)} />
+      </div>
     </>
   );
 }

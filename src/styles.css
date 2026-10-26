@@ -22,6 +22,36 @@ body {
     font-weight: bold;
 }
 
+.section-switch {
+    max-width: 1200px;
+    margin: 0 auto 20px;
+    display: flex;
+    gap: 8px;
+}
+
+.section-tab {
+    flex: 1;
+    min-height: 42px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background: #fff;
+    color: #555;
+    font: inherit;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.section-tab.active {
+    border-color: #333;
+    background: #333;
+    color: #fff;
+}
+
+.section-tab:disabled {
+    cursor: not-allowed;
+    opacity: 0.65;
+}
+
 .container {
     max-width: 1200px;
     margin: 0 auto;
@@ -52,6 +82,10 @@ body {
     grid-template-columns: 1fr 1fr;
     gap: 15px;
     margin-bottom: 25px;
+}
+
+.input-group.single-field {
+    grid-template-columns: minmax(0, 1fr);
 }
 
 .input-wrapper {
@@ -453,6 +487,44 @@ body {
     color: #333;
 }
 
+.quote-validity-note,
+.share-hint {
+    color: #666;
+    font-size: 13px;
+}
+
+.quote-validity-note {
+    margin-bottom: 15px;
+}
+
+.share-hint {
+    margin-top: 10px;
+}
+
+.quote-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+}
+
+.quote-actions .action-btn,
+.quote-actions .delete-action-btn {
+    flex: 1 1 30%;
+    min-height: 34px;
+}
+
+.quote-badge-pendiente {
+    background-color: #ffb74d;
+}
+
+.quote-badge-aceptado {
+    background-color: #4caf50;
+}
+
+.quote-badge-convertido {
+    background-color: #78909c;
+}
+
 @media (max-width: 900px) {
     .container {
         grid-template-columns: minmax(0, 1fr);
@@ -479,6 +551,10 @@ body {
     .form-section,
     .history-section {
         padding: 18px;
+    }
+
+    .section-switch {
+        margin-bottom: 14px;
     }
 
     .input-group {
@@ -531,7 +607,8 @@ body {
 
     .button-group button,
     .clean-button,
-    .card-actions button {
+    .card-actions button,
+    .quote-actions button {
         min-height: 40px;
     }
 }

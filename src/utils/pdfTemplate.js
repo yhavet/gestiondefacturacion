@@ -18,7 +18,16 @@ function field(label, value, bold = false) {
     </div>`;
 }
 
-export function buildInvoiceHTML({ cliente, productos, notas, fecha, total, pagado }) {
+export function buildInvoiceHTML({
+  cliente,
+  productos,
+  notas,
+  fecha,
+  total,
+  pagado,
+  tipo = 'COMPROBANTE',
+  vence,
+}) {
   const rows = productos.map((p, i) => {
     const bg = i % 2 === 0 ? '#f8f9fa' : '#ffffff';
     return `<tr style="background-color: ${bg}; border-bottom: 1px solid #e9ecef;">
@@ -30,7 +39,12 @@ export function buildInvoiceHTML({ cliente, productos, notas, fecha, total, paga
       </tr>`;
   }).join('');
 
-  const estado = pagado
+  const estado = vence
+    ? `<div style="background-color: #e8f0fe; color: #2c3e50; padding: 12px 20px; border-radius: 6px; text-align: center;">
+         <p style="margin: 0 0 3px 0; font-size: 10px; text-transform: uppercase; letter-spacing: 1px;">Vigencia</p>
+         <p style="margin: 0; font-size: 14px; font-weight: bold;">Válido hasta ${escapeHtml(vence)}</p>
+       </div>`
+    : pagado
     ? `<div style="background-color: #4caf50; color: white; padding: 12px 20px; border-radius: 6px; text-align: center;">
          <p style="margin: 0 0 3px 0; font-size: 10px; text-transform: uppercase; letter-spacing: 1px; opacity: 0.9;">Estado</p>
          <p style="margin: 0; font-size: 16px; font-weight: bold;">✓ Pagado</p>
@@ -41,7 +55,7 @@ export function buildInvoiceHTML({ cliente, productos, notas, fecha, total, paga
        </div>`;
 
   const totalBox = `<div style="background-color: #2c3e50; color: white; padding: 10px 18px; border-radius: 6px; text-align: right;">
-       <p style="margin: 0 0 4px 0; font-size: 10px; text-transform: uppercase; letter-spacing: 1px; opacity: 0.9;">Total a pagar</p>
+       <p style="margin: 0 0 4px 0; font-size: 10px; text-transform: uppercase; letter-spacing: 1px; opacity: 0.9;">${vence ? 'Total presupuestado' : 'Total a pagar'}</p>
        <p style="margin: 0; font-size: 20px; font-weight: bold;">$${total.toFixed(2)}</p>
      </div>`;
 
@@ -55,7 +69,7 @@ export function buildInvoiceHTML({ cliente, productos, notas, fecha, total, paga
   return `
     <div style="padding: 40px; font-family: Arial, sans-serif; background-color: #fff; color: #333;">
       <div style="border-bottom: 3px solid #2c3e50; padding-bottom: 20px; margin-bottom: 30px;">
-        <h1 style="margin: 0; font-size: 42px; color: #2c3e50; font-weight: bold; letter-spacing: 2px;">COMPROBANTE</h1>
+        <h1 style="margin: 0; font-size: 42px; color: #2c3e50; font-weight: bold; letter-spacing: 2px;">${escapeHtml(tipo)}</h1>
       </div>
 
       <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 30px; margin-bottom: 30px;">
@@ -63,6 +77,7 @@ export function buildInvoiceHTML({ cliente, productos, notas, fecha, total, paga
         ${field('Cliente', `${cliente.nombre} ${cliente.apellido}`.trim(), true)}
         ${field('Documento', cliente.documento)}
         ${field('Teléfono', cliente.telefono)}
+        ${field('Correo electrónico', cliente.email)}
       </div>
 
       <table style="width: 100%; border-collapse: collapse; margin: 30px 0; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">
@@ -83,11 +98,11 @@ export function buildInvoiceHTML({ cliente, productos, notas, fecha, total, paga
 
       <div style="margin-top: 40px; padding-top: 20px; border-top: 1px solid #e9ecef;">
         <p style="margin: 0 0 15px 0; text-align: center; font-size: 12px; color: #999;">Generado el ${nowString()}</p>
-        <div style="background-color: #f0f0f0; padding: 12px; border-radius: 4px; text-align: center; border: 1px solid #d0d0d0;">
+        ${vence ? '' : `<div style="background-color: #f0f0f0; padding: 12px; border-radius: 4px; text-align: center; border: 1px solid #d0d0d0;">
           <p style="margin: 0; font-size: 11px; color: #666; font-weight: bold; letter-spacing: 0.5px;">
             ✓ Certificado por <span style="color: #2c3e50; font-weight: bold;">TechSupport</span>
           </p>
-        </div>
+        </div>`}
       </div>
     </div>`;
 }
