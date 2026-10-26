@@ -1,97 +1,12 @@
 <!DOCTYPE html>
 <html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Gestor de Facturas</title>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
-    <link rel="stylesheet" href="styles.css">
-</head>
-<body>
-    <div class="header">
-        <h1>Gestor de Facturas</h1>
-    </div>
-
-    <div class="container">
-        <!-- Formulario -->
-        <div class="form-section">
-            <h2 class="section-title">Cliente</h2>
-
-            <div class="input-group">
-                <div class="input-wrapper">
-                    <label for="clientNombre">Nombre</label>
-                    <input type="text" id="clientNombre" placeholder="Ej. Ana">
-                </div>
-                <div class="input-wrapper">
-                    <label for="clientApellido">Apellido</label>
-                    <input type="text" id="clientApellido" placeholder="Ej. Pérez">
-                </div>
-            </div>
-
-            <div class="input-group">
-                <div class="input-wrapper">
-                    <label for="clientDocumento">Número de Documento</label>
-                    <input type="text" id="clientDocumento" placeholder="Ej. 12345678">
-                </div>
-                <div class="input-wrapper">
-                    <label for="clientTelefono">Número de Teléfono</label>
-                    <input type="tel" id="clientTelefono" placeholder="Ej. +54 9 11 2345-6789">
-                </div>
-            </div>
-
-            <h2 class="section-title">Productos</h2>
-
-            <button class="add-button" onclick="app.addProduct()">+ Agregar producto</button>
-
-            <div class="products-table">
-                <div class="table-header">
-                    <div>Producto</div>
-                    <div>Cant.</div>
-                    <div>Precio unit.</div>
-                    <div>Desc. %</div>
-                    <div>Total</div>
-                    <div></div>
-                </div>
-                <div id="productsContainer"></div>
-            </div>
-
-            <div class="notes-section">
-                <h3 class="notes-label">Notas (opcional)</h3>
-                <textarea id="notes" class="notes-input" placeholder="Observaciones, forma de pago, etc."></textarea>
-            </div>
-
-            <div style="margin-bottom: 15px; display: flex; align-items: center; gap: 10px;">
-                <input type="checkbox" id="pagado" style="width: 18px; height: 18px; cursor: pointer;">
-                <label for="pagado" style="cursor: pointer; font-size: 14px; color: #333; margin: 0;">Marcar como pagado</label>
-            </div>
-
-            <div class="total-section">
-                <div class="price-total">Precio total final</div>
-                <div class="total-amount" id="totalAmount">$ 0,00</div>
-                <div class="button-group">
-                    <button class="save-button" onclick="app.saveInvoice()">
-                        <span id="saveButtonText">Guardar</span>
-                    </button>
-                    <button class="pdf-button" onclick="app.generatePDF()">PDF</button>
-                    <button class="cancel-button hidden" id="cancelBtn" onclick="app.resetForm()">Cancelar</button>
-                </div>
-                <button class="clean-button" onclick="app.resetForm()">Limpiar</button>
-            </div>
-        </div>
-
-        <!-- Historial -->
-        <div class="history-section">
-            <h2 class="section-title">Registros guardados</h2>
-
-            <input type="text" class="search-input" id="searchInput" placeholder="Buscar por nombre o apellido"
-                onkeyup="app.filterClients()">
-
-            <div class="clients-list" id="clientsList"></div>
-        </div>
-    </div>
-
-    <script src="app.js"></script>
-</body>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
 </html>
-
-

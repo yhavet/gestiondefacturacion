@@ -407,3 +407,52 @@ body {
 .hidden {
     display: none;
 }
+
+/* Clases añadidas en la versión React (reemplazan estilos inline) */
+.card-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 10px;
+    margin-bottom: 10px;
+}
+
+.card-main {
+    flex: 1;
+}
+
+.badge {
+    color: #fff;
+    padding: 4px 10px;
+    border-radius: 12px;
+    font-size: 11px;
+    font-weight: bold;
+    white-space: nowrap;
+}
+
+.badge-paid {
+    background-color: #4caf50;
+}
+
+.badge-pending {
+    background-color: #ffb74d;
+}
+
+.checkbox-row {
+    margin-bottom: 15px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.checkbox-row input {
+    width: 18px;
+    height: 18px;
+    cursor: pointer;
+}
+
+.checkbox-row label {
+    cursor: pointer;
+    font-size: 14px;
+    color: #333;
+}
