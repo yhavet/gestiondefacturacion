@@ -258,6 +258,13 @@ export default function App() {
   return (
     <>
       <div className="header">
+        <img
+          className="brand-logo"
+          src="/tech-support-logo.png"
+          alt="Tech Support"
+          width="88"
+          height="88"
+        />
         <h1>Gestor de Facturas</h1>
       </div>
 
