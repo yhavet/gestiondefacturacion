@@ -30,133 +30,6 @@ body {
     gap: 20px;
 }
 
-@media (max-width: 900px) {
-    .container {
-        grid-template-columns: 1fr;
-    }
-
-    .history-section {
-        max-height: none;
-    }
-}
-
-@media (max-width: 600px) {
-    body {
-        padding: 12px;
-    }
-
-    .header {
-        margin-bottom: 20px;
-    }
-
-    .header h1 {
-        font-size: clamp(24px, 7vw, 32px);
-    }
-
-    .form-section,
-    .history-section {
-        padding: 18px;
-    }
-
-    .input-group {
-        gap: 12px;
-        margin-bottom: 20px;
-    }
-
-    .input-wrapper input,
-    .search-input,
-    .notes-input {
-        font-size: 16px;
-    }
-
-    .table-header {
-        display: none;
-    }
-
-    .table-row {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-        gap: 10px;
-        padding: 12px;
-        margin-bottom: 12px;
-        border: 1px solid #e0e0e0;
-        border-radius: 8px;
-        background: #fafafa;
-    }
-
-    .table-row .table-input:first-child {
-        grid-column: 1 / -1;
-    }
-
-    .table-input {
-        width: 100%;
-        min-width: 0;
-        padding: 10px 8px;
-        font-size: 16px;
-    }
-
-    .table-cell {
-        align-self: center;
-        padding: 8px 0;
-        font-weight: bold;
-    }
-
-    .delete-btn {
-        justify-self: end;
-        min-width: 40px;
-        min-height: 40px;
-    }
-
-    .button-group button,
-    .clean-button,
-    .card-actions button {
-        min-height: 40px;
-    }
-}
-
-@media (max-width: 420px) {
-    body {
-        padding: 8px;
-    }
-
-    .container {
-        gap: 14px;
-    }
-
-    .form-section,
-    .history-section {
-        padding: 14px;
-    }
-
-    .input-group {
-        grid-template-columns: 1fr;
-    }
-
-    .button-group {
-        flex-wrap: wrap;
-    }
-
-    .button-group button {
-        flex: 1 1 40%;
-    }
-
-    .cancel-button {
-        flex: 1 1 100% !important;
-    }
-
-    .card-top {
-        gap: 6px;
-    }
-
-    .badge {
-        padding: 4px 7px;
-        font-size: 10px;
-    }
-
-    .card-actions {
-        flex-wrap: wrap;
-    }
-}
-
 .form-section {
     background: white;
     padding: 30px;
@@ -576,4 +449,131 @@ body {
     cursor: pointer;
     font-size: 14px;
     color: #333;
+}
+
+@media (max-width: 900px) {
+    .container {
+        grid-template-columns: 1fr;
+    }
+
+    .history-section {
+        max-height: none;
+    }
+}
+
+@media (max-width: 600px) {
+    body {
+        padding: 12px;
+    }
+
+    .header {
+        margin-bottom: 20px;
+    }
+
+    .header h1 {
+        font-size: clamp(24px, 7vw, 32px);
+    }
+
+    .form-section,
+    .history-section {
+        padding: 18px;
+    }
+
+    .input-group {
+        gap: 12px;
+        margin-bottom: 20px;
+    }
+
+    .input-wrapper input,
+    .search-input,
+    .notes-input {
+        font-size: 16px;
+    }
+
+    .table-header {
+        display: none;
+    }
+
+    .table-row {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 10px;
+        padding: 12px;
+        margin-bottom: 12px;
+        border: 1px solid #e0e0e0;
+        border-radius: 8px;
+        background: #fafafa;
+    }
+
+    .table-row .table-input:first-child {
+        grid-column: 1 / -1;
+    }
+
+    .table-input {
+        width: 100%;
+        min-width: 0;
+        padding: 10px 8px;
+        font-size: 16px;
+    }
+
+    .table-cell {
+        align-self: center;
+        padding: 8px 0;
+        font-weight: bold;
+    }
+
+    .delete-btn {
+        justify-self: end;
+        min-width: 40px;
+        min-height: 40px;
+    }
+
+    .button-group button,
+    .clean-button,
+    .card-actions button {
+        min-height: 40px;
+    }
+}
+
+@media (max-width: 420px) {
+    body {
+        padding: 8px;
+    }
+
+    .container {
+        gap: 14px;
+    }
+
+    .form-section,
+    .history-section {
+        padding: 14px;
+    }
+
+    .input-group {
+        grid-template-columns: 1fr;
+    }
+
+    .button-group {
+        flex-wrap: wrap;
+    }
+
+    .button-group button {
+        flex: 1 1 40%;
+    }
+
+    .cancel-button {
+        flex: 1 1 100% !important;
+    }
+
+    .card-top {
+        gap: 6px;
+    }
+
+    .badge {
+        padding: 4px 7px;
+        font-size: 10px;
+    }
+
+    .card-actions {
+        flex-wrap: wrap;
+    }
 }
